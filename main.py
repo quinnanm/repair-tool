@@ -26,10 +26,15 @@ class ConnectPage(GridLayout):
         self.password = TextInput(multiline=False)
         self.add_widget(self.password)
 
-        self.join = Button(text="Join")
+        self.join = Button(text="Login")
         self.join.bind(on_press=self.join_button)
         self.add_widget(Label())  # just take up the spot.
         self.add_widget(self.join)
+
+        self.register = Button(text="Register")
+        self.register.bind(on_press=self.register_button)
+        self.add_widget(Label())  # just take up the spot.
+        self.add_widget(self.register)
 
     def join_button(self, instance):
         username = self.username.text
@@ -37,6 +42,10 @@ class ConnectPage(GridLayout):
         print(f"Joining as {username}")
         with open("prev_details.txt","w") as f:
             f.write(f"{password},{username}")
+
+    def register_button(self, instance):
+        print(f"New account")
+        
         
 class RepairTool(App):
     def build(self):
